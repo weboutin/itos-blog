@@ -20,7 +20,6 @@ export default class ArticleList extends React.Component {
   }
   render() {
     return <div>
-      <div className="headerEmpty"></div>
       <div className="articleWrap">
         {this.state.articles.map((article, index) => {
           return <ArticleCard article={article} key={index} />
