@@ -13,7 +13,7 @@ export default class ArticleDetail extends React.Component {
     }
   }
   componentDidMount() {
-    axios.get('http://192.168.1.220:4000/v1/article/1').then((response) => {
+    axios.get('http://127.0.0.1:4000/v1/article/1').then((response) => {
       const article = response.data;
       this.setState({
         article

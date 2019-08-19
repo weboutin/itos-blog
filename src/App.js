@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/header';
 import ArticleList from './components/articleList';
 import ArticleDetail from './components/articleDetail';
+import ArticleEditor from './components/articleEditor';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <Route path="/" exact component={ArticleList} />
         <Route path="/article/:articleId" component={ArticleDetail} />
+        <Route path="/article/:articleId/editor" component={ArticleEditor} />
       </Router>
     </div>
   );
