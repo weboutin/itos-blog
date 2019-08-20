@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Router>
         <Route path="/" exact component={ArticleList} />
-        <Route path="/article/:articleId" component={ArticleDetail} />
+        <Route path="/article/:articleId" exact component={ArticleDetail} />
         <Route path="/article/:articleId/editor" component={ArticleEditor} />
       </Router>
     </div>
