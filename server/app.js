@@ -1,11 +1,26 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const port = 4000
+const bodyParser = require('body-parser');
+const Model = require('./model');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(cors())
 
-app.get('/v1/articles', (req, res) => {
+const port = 4000
+
+app.post('/article', (req, res) => {
+  const article = req.body;
+  Model.save(article);
+  res.status('201').end();
+})
+
+app.put('/article/:articleId', (req, res) => {
+
+})
+
+app.get('/articles', (req, res) => {
   res.json([{
     id: 1,
     title: 'title1',
@@ -19,7 +34,7 @@ app.get('/v1/articles', (req, res) => {
   }])
 })
 
-app.get('/v1/article/:articleId', (req, res) => {
+app.get('/article/:articleId', (req, res) => {
   res.json({
     id: 1,
     title: 'title',
