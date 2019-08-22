@@ -1,9 +1,15 @@
 const fs = require('fs');
 const path = require('path');
-
 const articleDir = path.join(__dirname, "./articles");
-
 class Article {
+
+  update(article) {
+    const articleId = article.articleId;
+    fs.writeFileSync(
+      path.join(articleDir, articleId),
+      JSON.stringify(article)
+    );
+  }
 
   save(article) {
     const articleId = new Date().getTime().toString();
@@ -20,4 +26,4 @@ class Article {
   }
 }
 
-module.exports =  new Article();
+module.exports = new Article();

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const Model = require('./model');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 const port = 4000
@@ -17,7 +17,9 @@ app.post('/article', (req, res) => {
 })
 
 app.put('/article/:articleId', (req, res) => {
-
+  const article = req.body;
+  Model.save(article);
+  res.status(200).save(article);
 })
 
 app.get('/articles', (req, res) => {
