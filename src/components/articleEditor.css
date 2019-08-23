@@ -1,8 +1,29 @@
 .wrap {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.handleBox {
+  display: flex;
+  width: 700px;
+  justify-content: space-between;
+}
+
+.title {
+  width: 600px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.summary {
+  margin-top: 20px;
+  box-sizing: border-box;
+  width: 700px;
+  height: 100px;
 }
 
 .editor {
+  margin-top: 20px;
   width: 700px;
 }

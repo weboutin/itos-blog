@@ -31,6 +31,11 @@ export default class ArticleEditor extends React.Component {
 
   render() {
     return <div className="wrap">
+      <div className="handleBox">
+        <input className="title" placeholder="title"/>
+        <button>发布</button>
+      </div>
+      <textarea className="summary" placeholder="summary"/>
       <SimpleMDE className="editor"
         onChange={() => this.handleChange}
         value={this.state.article.content}

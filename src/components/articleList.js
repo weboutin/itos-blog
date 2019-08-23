@@ -11,7 +11,7 @@ export default class ArticleList extends React.Component {
     }
   }
   componentDidMount() {
-    axios.get('http://127.0.0.1:4000/v1/articles').then((response) => {
+    axios.get('http://127.0.0.1:4000/articles').then((response) => {
       const articles = response.data;
       this.setState({
         articles
