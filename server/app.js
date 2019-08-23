@@ -16,33 +16,22 @@ app.post('/article', (req, res) => {
   res.status('201').end();
 })
 
+app.get('/article/:articleId', (req, res) => {
+  const articleId = req.params.articleId;
+  const article = Model.getById(articleId);
+  res.status(200).json(article)
+})
+
+app.get('/articles', (req, res) => {
+  const articles = Model.all()
+  res.status(200).json(articles);
+})
+
 app.put('/article/:articleId', (req, res) => {
   const article = req.body;
   Model.save(article);
   res.status(200).save(article);
 })
 
-app.get('/articles', (req, res) => {
-  res.json([{
-    id: 1,
-    title: 'title1',
-    summary: '开开发者指南开发者指南开发者指南开发者指南开发者指南开发者指南开发者指南发者指南',
-    content: 'content1'
-  }, {
-    id: 2,
-    title: 'title2',
-    summary: 'summary2',
-    content: 'content2'
-  }])
-})
-
-app.get('/article/:articleId', (req, res) => {
-  res.json({
-    id: 1,
-    title: 'title',
-    summary: 'summary',
-    content: 'content'
-  });
-})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

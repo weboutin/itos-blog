@@ -1,28 +1,42 @@
 const fs = require('fs');
 const path = require('path');
-const articleDir = path.join(__dirname, "./articles");
+const articleDirName = path.join(__dirname, "./articles");
+
 class Article {
+  constructor() {
+    if (!fs.existsSync(articleDirName)) {
+      fs.mkdirSync(articleDirName);
+    }
+  }
 
   update(article) {
     const articleId = article.articleId;
     fs.writeFileSync(
-      path.join(articleDir, articleId),
+      path.join(articleDirName, articleId),
       JSON.stringify(article)
     );
   }
 
   save(article) {
     const articleId = new Date().getTime().toString();
+    article.articleId = articleId;
     fs.writeFileSync(
-      path.join(articleDir, articleId),
+      path.join(articleDirName, articleId),
       JSON.stringify(article)
     );
   }
 
   getById(articleId) {
-    return JSON.stringify(fs.readFileSync(
-      path.join(this.articleDir, articleId)
+    return JSON.parse(fs.readFileSync(
+      path.join(articleDirName, articleId),
+      'utf8'
     ))
+  }
+
+  all() {
+    return fs.readdirSync(articleDirName).sort().map((articleId)=> {
+      return this.getById(articleId)
+    })
   }
 }
 
