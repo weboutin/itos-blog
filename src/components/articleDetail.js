@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 
 export default class ArticleDetail extends React.Component {
   constructor() {
@@ -26,8 +27,7 @@ export default class ArticleDetail extends React.Component {
   render() {
     return <div>
       <div>{this.state.article.title}</div>
-      <div>{this.state.article.summary}</div>
-      <div>{this.state.article.content}</div>
+      <ReactMarkdown source={this.state.article.content} />
     </div>;
   }
 }
