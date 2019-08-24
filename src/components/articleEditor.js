@@ -8,37 +8,39 @@ export default class ArticleEditor extends React.Component {
   constructor() {
     super();
     this.state = {
-      article: {
-        title: "",
-        summary: "",
-        content: "",
-      }
+      title: "",
+      summary: "",
+      content: "",
     }
   }
 
-  componentDidMount() {
-    axios.get('http://127.0.0.1:4000/v1/article/1').then((response) => {
-      const article = response.data;
-      this.setState({
-        article
-      })
+  handleEditorChanged(value) {
+    this.setState({
+      content: value
     })
   }
 
-  handleChange(value) {
-    this.setState({ mdeValue: value });
+  handleTitleChanged(e) {
+    this.setState({
+      title: e.target.value
+    })
+  }
+
+  handleSummaryChanged(e) {
+    this.setState({
+      summary: e.target.value
+    })
   }
 
   render() {
     return <div className="wrap">
       <div className="handleBox">
-        <input className="title" placeholder="title"/>
+        <input className="title" placeholder="title" onChange={(e) => { this.handleTitleChanged(e) }} />
         <button>发布</button>
       </div>
-      <textarea className="summary" placeholder="summary"/>
+      <textarea className="summary" placeholder="summary" onChange={(e) => { this.handleSummaryChanged(e) }} />
       <SimpleMDE className="editor"
-        onChange={() => this.handleChange}
-        value={this.state.article.content}
+        onChange={(value) => this.handleEditorChanged(value)}
         options={{
           spellChecker: false
         }}

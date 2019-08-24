@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Route path="/" exact component={ArticleList} />
         <Route path="/article/:articleId" exact component={ArticleDetail} />
-        <Route path="/article/create" exact component={ArticleEditor} />
+        <Route path="/create" exact component={ArticleEditor} />
       </Router>
     </div>
   );
