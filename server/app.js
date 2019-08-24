@@ -11,7 +11,7 @@ app.use(cors())
 const port = 4000
 
 app.post('/article', (req, res) => {
-  const article = req.body;
+  const article = req.body.article;
   Model.save(article);
   res.status('201').end();
 })

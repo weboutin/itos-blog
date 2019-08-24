@@ -32,11 +32,20 @@ export default class ArticleEditor extends React.Component {
     })
   }
 
+  handleDeploy() {
+    const article = this.state;
+    axios.post('http://127.0.0.1:4000/article', {
+      article
+    }).then(() => {
+      this.props.history.push('/');
+    })
+  }
+
   render() {
     return <div className="wrap">
       <div className="handleBox">
         <input className="title" placeholder="title" onChange={(e) => { this.handleTitleChanged(e) }} />
-        <button>发布</button>
+        <button onClick={() => this.handleDeploy()}>发布</button>
       </div>
       <textarea className="summary" placeholder="summary" onChange={(e) => { this.handleSummaryChanged(e) }} />
       <SimpleMDE className="editor"
