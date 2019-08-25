@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
+import './articleDetail.css'
+
+const serverHost = process.env.REACT_APP_SERVER_HOST
 
 export default class ArticleDetail extends React.Component {
   constructor() {
@@ -15,8 +18,8 @@ export default class ArticleDetail extends React.Component {
   }
 
   componentDidMount() {
-    const articleId =  this.props.match.params.articleId;
-    axios.get(`http://127.0.0.1:4000/article/${articleId}`).then((response) => {
+    const articleId = this.props.match.params.articleId;
+    axios.get(`${serverHost}/article/${articleId}`).then((response) => {
       const article = response.data;
       this.setState({
         article
@@ -25,9 +28,10 @@ export default class ArticleDetail extends React.Component {
   }
 
   render() {
-    return <div>
-      <div>{this.state.article.title}</div>
+    return <div className="detail-wrap">
+      <div className="detail-mdWrap">
       <ReactMarkdown source={this.state.article.content} />
+      </div>
     </div>;
   }
 }

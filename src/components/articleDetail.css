@@ -1,0 +1,9 @@
+.detail-wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.detail-mdWrap {
+  width: 700px;
+}

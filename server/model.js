@@ -34,7 +34,9 @@ class Article {
   }
 
   all() {
-    return fs.readdirSync(articleDirName).sort().map((articleId)=> {
+    return fs.readdirSync(articleDirName).sort((a, b) => {
+      return b - a
+    }).map((articleId) => {
       return this.getById(articleId)
     })
   }

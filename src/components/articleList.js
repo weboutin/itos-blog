@@ -3,6 +3,8 @@ import ArticleCard from './articleCard';
 import axios from 'axios';
 import './articleList.css';
 
+const serverHost = process.env.REACT_APP_SERVER_HOST
+
 export default class ArticleList extends React.Component {
   constructor() {
     super()
@@ -11,7 +13,7 @@ export default class ArticleList extends React.Component {
     }
   }
   componentDidMount() {
-    axios.get('http://127.0.0.1:4000/articles').then((response) => {
+    axios.get(`${serverHost}/articles`).then((response) => {
       const articles = response.data;
       this.setState({
         articles

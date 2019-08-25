@@ -4,6 +4,8 @@ import "easymde/dist/easymde.min.css";
 import "./articleEditor.css";
 import axios from 'axios';
 
+const serverHost = process.env.REACT_APP_SERVER_HOST
+
 export default class ArticleEditor extends React.Component {
   constructor() {
     super();
@@ -34,7 +36,7 @@ export default class ArticleEditor extends React.Component {
 
   handleDeploy() {
     const article = this.state;
-    axios.post('http://127.0.0.1:4000/article', {
+    axios.post(`${serverHost}/article`, {
       article
     }).then(() => {
       this.props.history.push('/');
