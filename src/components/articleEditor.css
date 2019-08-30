@@ -23,6 +23,13 @@
   height: 100px;
 }
 
+.link {
+  margin-top: 20px;
+  box-sizing: border-box;
+  width: 700px;
+  height: 40px;
+}
+
 .editor {
   margin-top: 20px;
   width: 700px;

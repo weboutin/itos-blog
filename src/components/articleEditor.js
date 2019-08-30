@@ -13,7 +13,14 @@ export default class ArticleEditor extends React.Component {
       title: "",
       summary: "",
       content: "",
+      link: "",
     }
+  }
+
+  handleLinkChanged(e) {
+    this.setState({
+      link: e.target.value
+    })
   }
 
   handleEditorChanged(value) {
@@ -49,6 +56,7 @@ export default class ArticleEditor extends React.Component {
         <input className="title" placeholder="title" onChange={(e) => { this.handleTitleChanged(e) }} />
         <button onClick={() => this.handleDeploy()}>发布</button>
       </div>
+      <input className="link" placeholder="link" onChange={(e) => { this.handleLinkChanged(e) }} />
       <textarea className="summary" placeholder="summary" onChange={(e) => { this.handleSummaryChanged(e) }} />
       <SimpleMDE className="editor"
         onChange={(value) => this.handleEditorChanged(value)}
