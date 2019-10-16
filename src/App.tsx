@@ -6,7 +6,7 @@ import ArticleDetail from './components/articleDetail';
 import ArticleEditor from './components/articleEditor';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div>
       <Header />
@@ -19,5 +19,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
